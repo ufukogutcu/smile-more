@@ -1,0 +1,65 @@
+.alert {
+    background-color: var(--alert_background);
+    text-align: center;
+
+    border-top: 2px solid var(--alert_border);
+
+    transition: display 1s;
+}
+
+.disappear {
+    animation: fadeOut 0.5s ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0;}
+}
+
+.alert {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.content {
+    order: 1;
+    flex-shrink: 0;
+    flex-grow: 0;
+    color: var(--alert_text);
+    font-size: 14px;
+    font-weight: 600;
+    word-wrap: break-word;
+    max-width: calc(94% - 60px);
+    text-align: left;
+}
+
+.closebutton {
+    order: 2;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    cursor: pointer;
+
+    height: calc(2vh + 5px);
+    width: calc(2vh + 5px);
+    text-align: center;
+    padding: 0.1vh;
+    margin: 4px;
+    border: 0.16vh solid var(--alert_close_button_border);
+    border-radius: 0.8vh;
+    background-color: var(--alert_close_button_background);
+
+    color: var(--alert_close_button_text);
+    font-size: 1vh;
+    font-weight: bolder;
+}
+
+.closebutton:hover{
+    background-color: var(--alert_close_button_background_on_hover);
+}

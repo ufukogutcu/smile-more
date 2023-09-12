@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
-import {auth} from "../firebase"
+import {GoogleAuthProvider, auth} from "../firebase"
 
 export function useAuth() {
     return useContext(AuthContext)
@@ -8,10 +8,18 @@ export function useAuth() {
 const AuthContext = React.createContext()
 
 export function AuthProvider({children}) {
-    const [currentUser, setCurrentUser] = useState({uid:0})
+    const [currentUser, setCurrentUser] = useState({})
 
-    function login() {
-        return auth.signInAnonymously()
+    function guestLogin() {
+        auth.signInAnonymously()
+    }
+
+    function googleLogin() {
+        auth.signInWithRedirect(new GoogleAuthProvider())
+    }
+
+    function logout() {
+        auth.signOut()
     }
 
     useEffect(() => {
@@ -24,7 +32,9 @@ export function AuthProvider({children}) {
 
     const value = {
         currentUser,
-        login
+        guestLogin,
+        googleLogin,
+        logout
     }
 
     return (

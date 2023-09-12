@@ -1,5 +1,16 @@
+import { useAuth } from "../contexts/AuthContext"
+
 function Dashboard() {
-    return "Dasboard"
+    const { currentUser, logout } = useAuth()
+
+    return (
+        <>
+            Dashboard:
+            <br />
+            {currentUser.uid}
+            <button onClick={logout}>Sign Out</button>
+        </>
+    )
 }
 
 export default Dashboard

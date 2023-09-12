@@ -1,0 +1,37 @@
+:root {
+    font-family: 'Vazir', sans-serif;
+
+    --background: #d69a77;
+
+    --alert_background: antiquewhite;
+    --alert_border: #c48b6b;
+    --alert_text: black;
+    --alert_close_button_background: #c48b6b;
+    --alert_close_button_background_on_hover: #8f5e41;
+    --alert_close_button_border: black;
+    --alert_close_button_text: black;
+    
+    
+}
+
+.background {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: var(--background);
+}
+
+.alerts {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    width: 100%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-flow: column nowrap;
+}
