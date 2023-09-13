@@ -1,0 +1,103 @@
+.middle {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    gap: 150px;
+}
+
+.big_vertical_logo {
+    height: 560px;
+}
+
+.loginblock {
+    border: 2px solid var(--login_form_border);
+    border-radius: 10px;
+    height: 500px;
+    width: 300px;
+
+    display: grid;
+    padding: 30px;
+    row-gap: 0px;
+    text-align: center;
+}
+
+.text_logo {
+    margin: auto;
+    height: 100px;
+    width: calc( (16 / 9) * 100px);
+    padding-top: 110px;
+    padding-bottom: 30px;
+}
+
+.button {
+    width: 290px;
+    height: 43px;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 15px;
+    border: none;
+    color: black;
+    justify-self: center;
+}
+
+.button:hover {
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 
+      0 -1px 0 rgba(0, 0, 0, .04),
+      0 2px 4px rgba(0, 0, 0, .25),
+      0 0 0 3px rgba(0, 0, 0, 0.25)
+}
+
+.guest_button {
+    width: 240px;
+    height: 35px;
+}
+
+.login_logo {
+    position: absolute;
+    width: 25px;
+    display: block;
+    top: 50%;
+    left: 15px;
+    transform: translatey(-50%);
+}
+
+.apple_logo {
+    width: 20px;
+    left: 17px;
+    top: 46%;
+}
+
+.login_text {
+    font-size: 15px;
+}
+
+.guest_text {
+    font-size: 13px;
+}
+
+.guest_warning {
+    font-size: 9px;
+}
+
+@media (max-width: 1000px) {
+    .big_vertical_logo {
+        display: none;
+    }
+
+    .loginblock {
+        border: none;
+    }
+}

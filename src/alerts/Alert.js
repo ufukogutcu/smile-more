@@ -1,4 +1,4 @@
-import style from "./Alert.module.css"
+import styles from "./Alert.module.css"
 import { useState } from "react"
 
 function Alert(props) {
@@ -16,11 +16,11 @@ function Alert(props) {
         return <></>
     }
     return (
-        <div className={!disappearing ? style.alert:`${style.alert} ${style.disappear}`}>
-            <div className={style.content}>
+        <div className={!disappearing ? styles.alert:`${styles.alert} ${styles.disappear}`}>
+            <div className={styles.content}>
                 {props.children}
             </div>
-            <button className={style.closebutton} onClick={handleClose}>X</button>
+            <button className={styles.closebutton} onClick={handleClose}>X</button>
         </div>
     )
 }

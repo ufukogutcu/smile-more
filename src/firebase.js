@@ -1,6 +1,6 @@
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
-import { linkWithCredential, GoogleAuthProvider } from "firebase/auth"
+import { GoogleAuthProvider, OAuthProvider } from "firebase/auth"
 import 'firebase/compat/firestore'
 
 const app = firebase.initializeApp({
@@ -16,4 +16,6 @@ const app = firebase.initializeApp({
 export default app
 
 export const auth = app.auth()
-export {GoogleAuthProvider}
+
+export const googleProvider = new GoogleAuthProvider()
+export const appleProvider = new OAuthProvider("apple.com")

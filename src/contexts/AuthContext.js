@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
-import {GoogleAuthProvider, auth} from "../firebase"
+import { auth, googleProvider, appleProvider } from "../firebase"
 
 export function useAuth() {
     return useContext(AuthContext)
@@ -15,7 +15,11 @@ export function AuthProvider({children}) {
     }
 
     function googleLogin() {
-        auth.signInWithRedirect(new GoogleAuthProvider())
+        auth.signInWithPopup(googleProvider)
+    }
+
+    function appleLogin() {
+        auth.signInWithPopup(appleProvider)
     }
 
     function logout() {
@@ -34,6 +38,7 @@ export function AuthProvider({children}) {
         currentUser,
         guestLogin,
         googleLogin,
+        appleLogin,
         logout
     }
 
