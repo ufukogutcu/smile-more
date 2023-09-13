@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.1e0e0d18.css",
-    "main.js": "/static/js/main.cdd5db94.js",
+    "main.css": "/static/css/main.3a851986.css",
+    "main.js": "/static/js/main.c1c4abad.js",
     "static/media/big_vertical_logo.jpg": "/static/media/big_vertical_logo.c92db6d2eaa6e329c3ab.jpg",
     "static/media/text_logo.png": "/static/media/text_logo.1555d47824410b39f1aa.png",
     "static/media/apple_slogo.svg": "/static/media/apple_slogo.348e84b8ff07c917032f435ba576a0fe.svg",
     "index.html": "/index.html",
     "static/media/google_logo.svg": "/static/media/google_logo.330a2dc7f18d7502647dc5d6f93812ec.svg",
-    "main.1e0e0d18.css.map": "/static/css/main.1e0e0d18.css.map",
-    "main.cdd5db94.js.map": "/static/js/main.cdd5db94.js.map"
+    "main.3a851986.css.map": "/static/css/main.3a851986.css.map",
+    "main.c1c4abad.js.map": "/static/js/main.c1c4abad.js.map"
   },
   "entrypoints": [
-    "static/css/main.1e0e0d18.css",
-    "static/js/main.cdd5db94.js"
+    "static/css/main.3a851986.css",
+    "static/js/main.c1c4abad.js"
   ]
 }
