@@ -8,7 +8,7 @@ export function useAuth() {
 const AuthContext = React.createContext()
 
 export function AuthProvider({children}) {
-    const [currentUser, setCurrentUser] = useState({})
+    const [currentUser, setCurrentUser] = useState()
 
     function guestLogin() {
         auth.signInAnonymously()
@@ -27,11 +27,11 @@ export function AuthProvider({children}) {
     }
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
+        const unsub = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
         })
 
-        return unsubscribe
+        return unsub
     }, [])
 
     const value = {

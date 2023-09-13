@@ -12,6 +12,10 @@
     --alert_close_button_text: black;
 
     --login_form_border: #66422e;
+
+    --new_entry_button_background: #ffcaab;
+    --new_entry_button_background_on_hover:#e0b297;
+    --new_entry_button_text: #53250a;
     
 }
 

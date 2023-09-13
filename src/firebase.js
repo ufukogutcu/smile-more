@@ -1,7 +1,8 @@
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth"
-import 'firebase/compat/firestore'
+import { getFirestore, collection, doc, setDoc, getDoc, onSnapshot, query } from "firebase/firestore"
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage" 
 
 const app = firebase.initializeApp({
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -19,3 +20,9 @@ export const auth = app.auth()
 
 export const googleProvider = new GoogleAuthProvider()
 export const appleProvider = new OAuthProvider("apple.com")
+
+export const db = getFirestore(app)
+export {collection, doc, setDoc, getDoc, onSnapshot, query}
+
+export const storage = getStorage(app)
+export {ref, uploadBytes, getDownloadURL}
