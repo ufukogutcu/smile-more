@@ -1,7 +1,7 @@
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
 import { GoogleAuthProvider, OAuthProvider } from "firebase/auth"
-import { getFirestore, collection, doc, setDoc, getDoc, onSnapshot, query } from "firebase/firestore"
+import { getFirestore, collection, doc, setDoc, getDoc, onSnapshot, query, serverTimestamp } from "firebase/firestore"
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage" 
 
 const app = firebase.initializeApp({
@@ -22,7 +22,7 @@ export const googleProvider = new GoogleAuthProvider()
 export const appleProvider = new OAuthProvider("apple.com")
 
 export const db = getFirestore(app)
-export {collection, doc, setDoc, getDoc, onSnapshot, query}
+export {collection, doc, setDoc, getDoc, onSnapshot, query, serverTimestamp}
 
 export const storage = getStorage(app)
 export {ref, uploadBytes, getDownloadURL}

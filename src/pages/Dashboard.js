@@ -15,13 +15,15 @@ function Dashboard() {
         if (firstTime) {
             setFirstTime(false)
         }
-        console.log(input.target.files)
         setImage(input.target.files[0])
         saveSmile("ma label", input.target.files[0])
     }
 
     return (
         <>
+            {/* Navbar */}
+
+
             {/* Image upload screen */}
             {image && <img style={{width: "50px"}} alt={image.name} src={URL.createObjectURL(image)}></img>}
 
@@ -34,8 +36,8 @@ function Dashboard() {
             </button>
             <input onChange={handleImage} className="imginput" style={{display:"none"}} type="file" accept="image/*" />
             
-            {/* Dashboard */}
-            Dashboard:
+            {/* Smiles */}
+            Smiles:
             <br />
             {currentUser.uid}
             <br></br>
@@ -43,9 +45,7 @@ function Dashboard() {
                 return (
                 <>
                     {smile.label}
-                    {smile.imageURL}
-                    <img alt={smile.label} style={{width: "30px"}} src={smile.imageURL}></img>
-                    <br></br>
+                    {smile.localTime.day}
                 </>
                 )
             })}

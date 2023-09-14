@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
-import { db, collection, doc, setDoc, onSnapshot, query, storage, ref, uploadBytes, getDownloadURL } from "../firebase"
+import { db, collection, doc, setDoc, onSnapshot, query, storage, ref, uploadBytes, getDownloadURL, serverTimestamp } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 
 export function useSmiles() {
@@ -26,9 +26,17 @@ export function SmilesProvider({children}) {
         const imageURL = await saveImage(image)
         let pre = ""
         if (currentUser.isAnonymous) {pre = "GUEST-"}
-        const collectionRef = collection(db, `${pre}${currentUser.uid}`);
+        const collectionRef = collection(db, `${pre}${currentUser.uid}`)
+        const now = new Date()
         setDoc(doc(collectionRef), {
-                label: label, imageURL: imageURL,
+                label: label,
+                imageURL: imageURL,
+                serverTime: serverTimestamp(),
+                localTime: {
+                    day: now.getDate(),
+                    month: now.getMonth() + 1,
+                    year: now.getFullYear()
+                }
             }
         )
     }
