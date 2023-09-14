@@ -16,7 +16,7 @@ export function SmilesProvider({children}) {
     async function saveImage(image) {
         let pre = ""
         if (currentUser.isAnonymous) {pre = "GUEST-"}
-        const storageRef = ref(storage, `${pre}${currentUser.uid}/${image.name}-${image.size}-${image.lastModified}`)
+        const storageRef = ref(storage, `${pre}${currentUser.uid}/${image.size}-${image.lastModified}--${image.name}`)
         await uploadBytes(storageRef, image)
         return getDownloadURL(storageRef)
     }
@@ -41,14 +41,6 @@ export function SmilesProvider({children}) {
         )
     }
 
-    function getImage(url) {
-        const xhr = new XMLHttpRequest()
-        xhr.responseType = 'blob'
-        xhr.open('GET', url)
-        xhr.send()
-        return xhr.response
-    }
-
     useEffect(() => {
         if (currentUser) {
             let pre = ""
@@ -69,7 +61,6 @@ export function SmilesProvider({children}) {
     const value = {
         saveSmile,
         smiles,
-        getImage
     }
 
     return (

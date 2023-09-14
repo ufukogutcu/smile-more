@@ -1,6 +1,6 @@
 :root {
     font-family: 'Vazir', sans-serif;
-
+    
     --background: #d69a77;
 
     --alert_background: antiquewhite;
@@ -17,6 +17,7 @@
     --new_entry_button_background_on_hover:#e0b297;
     --new_entry_button_text: #53250a;
     
+    --upload_screen_background: #8f5e41;
 }
 
 .background {
@@ -33,7 +34,7 @@
     position: absolute;
     bottom: 0;
     left: 50%;
-    z-index: 1;
+    z-index: 4;
     width: 100%;
     transform: translateX(-50%);
 

@@ -1,0 +1,29 @@
+.uploadscreen {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 95%;
+    height: 100%;
+    border-radius: 15px;
+    
+    background-color: var(--upload_screen_background);
+}
+
+.uploadscreenclosebutton {
+
+}
+
+.uploadimage {
+    max-width: 60px;
+}
+
+.uploadlabel {
+
+}
+
+.uploadbutton {
+
+}
