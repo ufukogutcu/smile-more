@@ -1,11 +1,18 @@
 import { useState, useRef } from "react"
 import { useAuth } from "../contexts/AuthContext"
 import { useSmiles } from "../contexts/SmilesContext"
+
 import newentrybuttonStyles from "./DashboardStyles/new_entry_button.module.css"
 import uploadscreenStyles from "./DashboardStyles/upload_screen.module.css"
+import pageStyles from "./DashboardStyles/main.module.css"
+import navbarStyles from "./DashboardStyles/navbar.module.css"
+
+import logo from "../static/text_logo.png"
+
+import Smiles from "./Smiles"
 
 function Dashboard() {
-    const { currentUser, logout } = useAuth()
+    const { logout } = useAuth()
     const { saveSmile, smiles } = useSmiles()
 
     const [firstTime, setFirstTime] = useState(true)
@@ -24,7 +31,10 @@ function Dashboard() {
     return (
         <>
             {/* Navbar */}
-
+            <div className={pageStyles.navbar}>
+                <img className={navbarStyles.logo} alt="logo" src={logo}></img>
+                <button className={navbarStyles.logoutbutton} onClick={logout}>Sign Out</button>
+            </div>
 
             {/* Image upload screen */}
             {image && 
@@ -36,7 +46,7 @@ function Dashboard() {
                     <div className={uploadscreenStyles.uploadimagecontainer}>
                         <img className={uploadscreenStyles.uploadimage} alt={image.name} src={URL.createObjectURL(image)}></img>
                     </div>
-                    <form>
+                    <form className={uploadscreenStyles.uploadform}>
                         <input className={uploadscreenStyles.uploadlabel} type="text" ref={labelRef}></input>
                         <button className={uploadscreenStyles.uploadbutton} type="submit" onClick={(e) => {
                             e.preventDefault()
@@ -56,21 +66,12 @@ function Dashboard() {
             }}>
                 <h1 className={newentrybuttonStyles.newentrybuttontext}>+</h1>
             </button>
-            <input onChange={handleImage} className="imginput" style={{display:"none"}} type="file" accept="image/*" />
+            <input onChange={handleImage} className="imginput" style={{display:"none"}} type="file" accept="image/*" onClick={(e) => {e.target.value=null}}/>
             
             {/* Smiles */}
-            Smiles:
-            <br />
-            {currentUser.uid}
-            <br></br>
-            {smiles.map((smile) => {
-                return (
-                <>
-                    {smile.label}<br></br>
-                </>
-                )
-            })}
-            <button onClick={logout}>Sign Out</button>
+            <div className={pageStyles.smilespage}>
+                <Smiles />
+            </div>
         </>
     )
 }

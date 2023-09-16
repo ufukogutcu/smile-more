@@ -1,0 +1,25 @@
+.box {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    padding: 30px;
+    overflow: auto;
+}
+
+.smile {
+    width: 150px;
+    height: 250px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.smilephoto {
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.smilelabel {
+    font-size: 25px;
+}

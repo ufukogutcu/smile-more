@@ -1,6 +1,6 @@
 :root {
     font-family: 'Vazir', sans-serif;
-    
+
     --background: #d69a77;
 
     --alert_background: antiquewhite;
@@ -18,6 +18,7 @@
     --new_entry_button_text: #53250a;
     
     --upload_screen_background: #8f5e41;
+    --upload_screen_image_container: #53250a;
 }
 
 .background {
