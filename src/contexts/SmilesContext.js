@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
-import { db, collection, doc, setDoc, onSnapshot, query, storage, ref, uploadBytes, getDownloadURL, serverTimestamp } from "../firebase"
+import { db, collection, doc, setDoc, onSnapshot, query, storage, ref, uploadBytes, getDownloadURL, serverTimestamp, deleteDoc, deleteObject } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 
 export function useSmiles() {
@@ -16,21 +16,26 @@ export function SmilesProvider({children}) {
     async function saveImage(image) {
         let pre = ""
         if (currentUser.isAnonymous) {pre = "GUEST-"}
-        const storageRef = ref(storage, `${pre}${currentUser.uid}/${image.size}-${image.lastModified}--${image.name}`)
+        const id = Math.floor(Math.random() * 500)
+        const storageRef = ref(storage, `${pre}${currentUser.uid}/${image.size}-${image.lastModified}--${id}--${image.name}`)
         await uploadBytes(storageRef, image)
-        return getDownloadURL(storageRef)
+        return `${pre}${currentUser.uid}/${image.size}-${image.lastModified}--${id}--${image.name}`
     }
 
     async function saveSmile(label, image) {
         if (!currentUser) {return}
-        const imageURL = await saveImage(image)
+        const directory = await saveImage(image)
+        const storageRef = ref(storage, directory)
+        const imageURL = await getDownloadURL(storageRef)
         let pre = ""
         if (currentUser.isAnonymous) {pre = "GUEST-"}
-        const collectionRef = collection(db, `${pre}${currentUser.uid}`)
         const now = new Date()
-        setDoc(doc(collectionRef), {
+        const id = Math.floor(Math.random() * 500)
+        await setDoc(doc(db, `${pre}${currentUser.uid}`, `${directory.slice(-10)}-${label}${now.getDate()}${id}`), {
+                id: id,
                 label: label,
                 imageURL: imageURL,
+                directory: directory,
                 serverTime: serverTimestamp(),
                 localTime: {
                     day: now.getDate(),
@@ -39,6 +44,16 @@ export function SmilesProvider({children}) {
                 }
             }
         )
+    }
+
+    async function deleteSmile(smile) {
+        const storageRef = ref(storage, smile.directory)
+        await deleteObject(storageRef)
+            .catch((e) => {console.log(e)})
+        let pre = ""
+        if (currentUser.isAnonymous) {pre = "GUEST-"}
+        await deleteDoc(doc(db, `${pre}${currentUser.uid}`, `${smile.directory.slice(-10)}-${smile.label}${smile.localTime.day}${smile.id}`))
+            .catch((e) => {console.log(e)})
     }
 
     useEffect(() => {
@@ -60,6 +75,7 @@ export function SmilesProvider({children}) {
 
     const value = {
         saveSmile,
+        deleteSmile,
         smiles,
     }
 

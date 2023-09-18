@@ -1,7 +1,10 @@
 :root {
     font-family: 'Vazir', sans-serif;
 
-    --background: #d69a77;
+    --background: wheat;
+    color: black;
+
+    --navbar_background: #d69a77;
 
     --alert_background: antiquewhite;
     --alert_border: #c48b6b;
@@ -19,6 +22,17 @@
     
     --upload_screen_background: #8f5e41;
     --upload_screen_image_container: #53250a;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #3f3f46;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar {
+    background-color: transparent;
 }
 
 .background {
