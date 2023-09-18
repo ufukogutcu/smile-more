@@ -85,6 +85,7 @@
     aspect-ratio: 1;
     text-align: center;
     position: relative;
+    cursor: default;
 }
 
 .smile {

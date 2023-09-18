@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { useSmiles } from "../contexts/SmilesContext"
 
 import SmilesofDay from "./SmilesofDay"
@@ -6,7 +5,7 @@ import SmilesofDay from "./SmilesofDay"
 import styles from "./DashboardStyles/Smiles.module.css"
 
 function Smiles() {
-    const { smiles } = useSmiles()
+    const { smiles, setFilter, dateFilter, filteredSmiles } = useSmiles()
 
     const now = new Date()
     const nowDay = now.getDate()
@@ -103,13 +102,11 @@ function Smiles() {
         "December"
     ]
 
-    const [showSmiles, setShowSmiles] = useState([])
-
     const visualizeSmiles = (smiles) => {
         return (
             <a onClick={(e) => {
                 e.preventDefault()
-                setShowSmiles(smiles)
+                setFilter(smiles[0].localTime)
             }} href="/#">
                 <img className={styles.smile} alt={smiles[0].label} src={smiles[0].imageURL}></img>
             </a>
@@ -118,7 +115,7 @@ function Smiles() {
     
     return (
         <>
-            {showSmiles.length !== 0 ? <SmilesofDay smiles={showSmiles} return={()=>{setShowSmiles([])}} /> : 
+            {filteredSmiles.length !== 0 ? <SmilesofDay /> : 
                 <div className={styles.calendar}>
                 {Array.from(calendar.entries()).map((items, index) => (   
                     <div className={styles.year} key={index}>

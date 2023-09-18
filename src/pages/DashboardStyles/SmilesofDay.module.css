@@ -7,7 +7,8 @@
 }
 
 .returnbutton {
-
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .smiles {
@@ -23,6 +24,11 @@
 
 }
 
-.smilephoto {
+.photo {
     width: 100px;
+}
+
+.label {
+    font-size: 20px;
+    text-align: center;
 }

@@ -3,20 +3,26 @@ import styles from "./DashboardStyles/SmilesofDay.module.css"
 import { useSmiles } from "../contexts/SmilesContext"
 
 function SmilesofDay(props) {
-    const { deleteSmile } = useSmiles()
+    const { deleteSmile, setFilter, filteredSmiles } = useSmiles()
+
+    const handleBack = () => {
+        setFilter(undefined)
+    }
+
+    const handleDelete = (smile) => {
+        deleteSmile(smile)
+    }
 
     return (
         <div className={styles.page}>
-            <button className={styles.returnbutton} onClick={props.return}>return</button>
+            <button className={styles.returnbutton} onClick={handleBack}>return</button>
             <div className={styles.smiles}>
-                {props.smiles.map((smile, index) => {
+                {filteredSmiles.map((smile, index) => {
                     return (
                         <div key={index} className={styles.smile}>
-                            <button onClick={()=>{
-                                deleteSmile(smile)
-                                props.return()
-                            }} className={styles.deletebutton}>X</button>
-                            <img className={styles.smilephoto} alt={smile.label} src={smile.imageURL}></img>
+                            <button onClick={() => {handleDelete(smile)}} className={styles.deletebutton}>X</button>
+                            <img className={styles.photo} alt={smile.label} src={smile.imageURL}></img>
+                            <h1 className={styles.label}>{smile.label !=="" ? smile.label : "no label"}</h1>
                         </div>
                     )
                 })}

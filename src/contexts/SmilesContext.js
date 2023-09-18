@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
-import { db, collection, doc, setDoc, onSnapshot, query, storage, ref, uploadBytes, getDownloadURL, serverTimestamp, deleteDoc, deleteObject } from "../firebase"
+import { db, collection, doc, setDoc, onSnapshot, query, storage, ref, uploadBytes, getDownloadURL, serverTimestamp, deleteDoc, deleteObject, where } from "../firebase"
 import { useAuth } from "../contexts/AuthContext"
 
 export function useSmiles() {
@@ -12,6 +12,9 @@ export function SmilesProvider({children}) {
     const { currentUser } = useAuth()
 
     const [smiles, setSmiles] = useState([])
+
+    const [dateFilter, setFilter] = useState()
+    const [filteredSmiles, setFilteredSmiles] = useState([])
 
     async function saveImage(image) {
         let pre = ""
@@ -59,8 +62,8 @@ export function SmilesProvider({children}) {
     useEffect(() => {
         if (currentUser) {
             let pre = ""
-        if (currentUser.isAnonymous) {pre = "GUEST-"}
-            const q = query(collection(db, `${pre}${currentUser.uid}`))
+            if (currentUser.isAnonymous) {pre = "GUEST-"}
+            let q = query(collection(db, `${pre}${currentUser.uid}`))
             const unsub = onSnapshot(q, (docs) => {
                 const smiles = []
                 docs.forEach((doc) => {
@@ -73,9 +76,32 @@ export function SmilesProvider({children}) {
         }
     }, [currentUser])
 
+    useEffect(() => {
+        if (currentUser && dateFilter) {
+            let pre = ""
+            if (currentUser.isAnonymous) {pre = "GUEST-"}
+            let q = query(collection(db, `${pre}${currentUser.uid}`), where("localTime", "==", dateFilter))
+            const unsub = onSnapshot(q, (docs) => {
+                const filteredSmiles = []
+                docs.forEach((doc) => {
+                    filteredSmiles.push(doc.data())
+                })
+                setFilteredSmiles(filteredSmiles)
+            });
+    
+            return unsub
+        }
+
+        if (dateFilter === undefined) {
+            setFilteredSmiles([])
+        }
+    }, [currentUser, dateFilter])
+
     const value = {
         saveSmile,
         deleteSmile,
+        setFilter,
+        filteredSmiles,
         smiles,
     }
 
