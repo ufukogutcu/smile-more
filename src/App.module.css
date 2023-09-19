@@ -5,6 +5,10 @@
     color: black;
 
     --navbar_background: #d69a77;
+    --navbar_logout_button_background: #c48b6b;
+    --navbar_logout_button_on_hover: #8f5e41;
+    --navbar_logout_button_border: black;
+    --navbar_logout_button_text: black;
 
     --alert_background: antiquewhite;
     --alert_border: #c48b6b;

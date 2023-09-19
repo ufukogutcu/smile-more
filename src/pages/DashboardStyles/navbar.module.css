@@ -8,5 +8,24 @@
     flex: 0;
     margin-right: 20px;
     cursor: pointer;
+    background-color: var(--navbar_logout_button_background);
+    color: var(--navbar_logout_button_text);
+    white-space: nowrap;
+    font-weight: bold;
+    padding: 5px;
 
+    border: solid 2px var(--navbar_logout_button_border);
+    border-radius: 10px;
+}  
+
+.logoutbutton:hover {
+    background-color: var(--navbar_logout_button_on_hover);
+}
+
+.logoutbutton:focus {
+    outline: none;
+    box-shadow: 
+      0 -1px 0 rgba(0, 0, 0, .04),
+      0 2px 4px rgba(0, 0, 0, .25),
+      0 0 0 3px rgba(0, 0, 0, 0.25)
 }
