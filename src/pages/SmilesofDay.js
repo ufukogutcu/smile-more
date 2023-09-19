@@ -15,14 +15,14 @@ function SmilesofDay(props) {
 
     return (
         <div className={styles.page}>
-            <button className={styles.returnbutton} onClick={handleBack}>return</button>
+            <button className={styles.returnbutton} onClick={handleBack}>&lt;</button>
             <div className={styles.smiles}>
                 {filteredSmiles.map((smile, index) => {
                     return (
                         <div key={index} className={styles.smile}>
                             <button onClick={() => {handleDelete(smile)}} className={styles.deletebutton}>X</button>
                             <img className={styles.photo} alt={smile.label} src={smile.imageURL}></img>
-                            <h1 className={styles.label}>{smile.label !=="" ? smile.label : "no label"}</h1>
+                            {smile.label !=="" && <h1 className={styles.label}>{smile.label}</h1>}
                         </div>
                     )
                 })}

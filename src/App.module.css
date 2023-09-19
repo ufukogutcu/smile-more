@@ -22,6 +22,19 @@
     
     --upload_screen_background: #8f5e41;
     --upload_screen_image_container: #53250a;
+
+    --daily_smiles_return_button_background: #c48b6b;
+    --daily_smiles_return_button_border: black;
+    --daily_smiles_return_button_on_hover: #8f5e41;
+    --daily_smiles_return_button_text: black;
+
+    --daily_smiles_smile_background: none;
+
+    --daily_smiles_photo_delete_button_background: #d69a77;
+    --daily_smiles_photo_delete_button_on_hover: #8f5e41;
+    --daily_smiles_photo_delete_button_text: black;
+
+    --daily_smiles_photo_label_background: rgba(226, 122, 37, 0.4);
 }
 
 ::-webkit-scrollbar-thumb {
