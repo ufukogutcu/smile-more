@@ -1,7 +1,7 @@
 import { useAuth } from "../contexts/AuthContext"
 import styles from "./AuthenticationPage.module.css"
 import big_vertical_logo from "../static/big_vertical_logo.png"
-import text_logo from "../static/text_logo.png"
+import text_logo from "../static/small_text_logo.png"
 import google_logo from "../static/google_logo.svg"
 import apple_logo from "../static/apple_slogo.svg"
 

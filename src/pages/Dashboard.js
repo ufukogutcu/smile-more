@@ -7,7 +7,7 @@ import uploadscreenStyles from "./DashboardStyles/upload_screen.module.css"
 import pageStyles from "./DashboardStyles/main.module.css"
 import navbarStyles from "./DashboardStyles/navbar.module.css"
 
-import logo from "../static/text_logo.png"
+import logo from "../static/small_text_logo.png"
 
 import Smiles from "./Smiles"
 

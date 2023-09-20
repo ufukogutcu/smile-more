@@ -29,8 +29,7 @@
 
 .text_logo {
     margin: auto;
-    height: 100px;
-    width: calc( (16 / 9) * 100px);
+    height: 70px;
     padding-top: 110px;
     padding-bottom: 30px;
 }
