@@ -34,8 +34,10 @@ export function SmilesProvider({children}) {
         if (currentUser.isAnonymous) {pre = "GUEST-"}
         const now = new Date()
         const id = Math.floor(Math.random() * 500)
-        await setDoc(doc(db, `${pre}${currentUser.uid}`, `${directory.slice(-10)}-${label}${now.getDate()}${id}`), {
+        const id_2 = Math.floor(Math.random() * 500)
+        await setDoc(doc(db, `${pre}${currentUser.uid}`, `${directory.slice(-10)}-${label}${id}${id_2}`), {
                 id: id,
+                id_2, id_2,
                 label: label,
                 imageURL: imageURL,
                 directory: directory,
@@ -55,7 +57,7 @@ export function SmilesProvider({children}) {
             .catch((e) => {console.log(e)})
         let pre = ""
         if (currentUser.isAnonymous) {pre = "GUEST-"}
-        await deleteDoc(doc(db, `${pre}${currentUser.uid}`, `${smile.directory.slice(-10)}-${smile.label}${smile.localTime.day}${smile.id}`))
+        await deleteDoc(doc(db, `${pre}${currentUser.uid}`, `${smile.directory.slice(-10)}-${smile.label}${smile.id}${smile.id_2}`))
             .catch((e) => {console.log(e)})
     }
 
