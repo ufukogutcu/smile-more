@@ -13,7 +13,7 @@ import Smiles from "./Smiles"
 
 function Dashboard() {
     const { logout } = useAuth()
-    const { saveSmile, smiles } = useSmiles()
+    const { saveSmile } = useSmiles()
 
     const [firstTime, setFirstTime] = useState(true)
 
@@ -43,17 +43,15 @@ function Dashboard() {
                         e.preventDefault()
                         setImage(null)
                     }}className={uploadscreenStyles.uploadscreenclosebutton}>X</button>
-                    <div className={uploadscreenStyles.uploadimagecontainer}>
-                        <img className={uploadscreenStyles.uploadimage} alt={image.name} src={URL.createObjectURL(image)}></img>
-                    </div>
-                    <form className={uploadscreenStyles.uploadform}>
-                        <input className={uploadscreenStyles.uploadlabel} type="text" ref={labelRef}></input>
+                    <img className={uploadscreenStyles.uploadimage} alt={image.name} src={URL.createObjectURL(image)}></img>
+                    <form name="uploadsmile" className={uploadscreenStyles.uploadform}>
+                        <input placeholder="Title (You can leave this empty)" className={uploadscreenStyles.uploadlabel} type="text" ref={labelRef}></input>
                         <button className={uploadscreenStyles.uploadbutton} type="submit" onClick={(e) => {
                             e.preventDefault()
                             saveSmile(labelRef.current.value, image)
                             setImage(null)
                         }}>
-                            Save smile
+                            &#128512;
                         </button>
                     </form>
                 </div>

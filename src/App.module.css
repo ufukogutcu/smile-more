@@ -23,9 +23,13 @@
     --new_entry_button_background: #ffcaab;
     --new_entry_button_background_on_hover:#e0b297;
     --new_entry_button_text: #53250a;
-    
-    --upload_screen_background: #8f5e41;
-    --upload_screen_image_container: #53250a;
+
+    --upload_screen_background: wheat;
+
+    --upload_screen_close_button_background: #ffcaab;
+    --upload_screen_close_button_border: black;
+    --upload_screen_close_button_on_hover:#e0b297;
+    --upload_screen_close_button_text: #53250a;
 
     --daily_smiles_return_button_background: #c48b6b;
     --daily_smiles_return_button_border: black;
