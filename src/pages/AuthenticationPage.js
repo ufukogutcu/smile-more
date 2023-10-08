@@ -22,7 +22,7 @@ function AuthenticationPage() {
                 <button className={styles.button} onClick={appleLogin}>
                     <img className={`${styles.login_logo} ${styles.apple_logo}`} alt="apple logo" src={apple_logo}></img>
                     <b className={styles.login_text}>
-                        Sign in with Apple
+                        Sign in with Apple (N/A)
                     </b>
                     </button>
                 <b>or</b>
