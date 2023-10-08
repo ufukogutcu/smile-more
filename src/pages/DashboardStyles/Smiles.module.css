@@ -97,5 +97,5 @@
     left: 50%;
     bottom: 50%;
     transform: translateX(-50%);
-    border-radius: 10000vh;
+    border-radius: 100%;
 }
